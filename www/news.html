@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="datura"/>
+    <meta name="copyright" content="版权"/>
+    <meta name="description" content="描述"/>
+    <meta name="keywords" content="关键字"/>
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        li{list-style: none}
+        body{font-size: 20px;}
+        #box{
+            width: 600px;
+            padding: 10px;
+            border: 2px dotted #000;
+            margin: 100px auto;
+        }
+        #box h3{
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.1rem
+        }
+        #box  li h4{
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 0.2rem;
+        }
+        #box  li p{
+            font-size: 0.8rem;
+            text-indent: 0.2rem;
+        }
+        #box li:nth-of-type(odd){
+            margin-bottom: 2px;
+            background-color: rgba(0,255,255,.3);
+            padding: 5px 2px;
+        }
+        #box li:nth-of-type(even){
+            margin-bottom: 2px;
+            background-color: rgba(255,255,0,.3);
+            padding: 5px 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h3>新闻</h3>
+        <ul id="ul1">
+        </ul>
+    </div>
+</body>
+</html>
+<script src="ajax.js" type="text/javascript"></script>
+<script>
+    window.onload = function () {
+        var oUl = document.getElementById('ul1');
+        ajax({
+            url:'getnews',
+            success: function (str) {
+                //var jsonD = eval('(' + str + ')');
+                var jsonD = JSON.parse(str);
+                for (var i=0;i<jsonD.length;i++){
+                    var oLi = document.createElement('li');
+                    oLi.innerHTML = "<h4>"+ jsonD[i].title +"</h4><p>"+ jsonD[i].content +"</p>"
+                    oUl.appendChild(oLi);
+                }
+            }
+        });
+    }
+</script>

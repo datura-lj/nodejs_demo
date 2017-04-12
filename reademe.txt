@@ -1,0 +1,9 @@
+简介：利用node.js搭建一个服务，从数据库中拿取数据发送到前端，最终在页面上展示。
+小白操作：
+  1.将文件下载到本地；
+  2.安装navicat将已下载的sql文件拖拽到“以安装好的mysql”中执行。
+  3.
+	a.手动开启服务（找到server所在文件夹，然后执行node server）
+	b.用webstrom关联node模块，然后打开server.js文件，右键单机run
+  4.在浏览器地址栏中输入http://localhost:8088/news.html；
+  5.万事大吉。
